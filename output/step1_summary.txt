@@ -1,0 +1,18 @@
+=== Log overview (PM4PY) ===
+Cases: 100  Events: 495
+Activities: ['Approve Claim', 'Close Claim', 'Evaluate Claim', 'Register Claim', 'Verify Documents']
+Start activities: {'Register Claim': 99, 'Verify Documents': 1}
+End activities: {'Close Claim': 100}
+Variants: 5
+Case duration (h): min 2.6, median 5.0, max 7.1
+
+=== Findings per check ===
+check
+1_missing_or_unparseable          5
+2_format_inconsistent            10
+4_earlier_than_previous_event     5
+5_precedence_violation           12
+
+Distinct suspicious events: 22
+Cases affected: 22 / 100
+Events where a day/month swap would fix the order: 0

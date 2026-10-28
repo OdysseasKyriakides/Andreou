@@ -1,0 +1,4 @@
+pandas>=2.1
+numpy
+pm4py>=2.7
+matplotlib
