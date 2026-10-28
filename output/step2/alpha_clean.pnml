@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="alpha_classic_net_1793200022.3534334" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>alpha_classic_net_1793200022.3534334</text>
+    </name>
+    <page id="n0">
+      <place id="end">
+        <name>
+          <text>end</text>
+        </name>
+      </place>
+      <place id="({'Evaluate Claim'}, {'Approve Claim'})">
+        <name>
+          <text>({'Evaluate Claim'}, {'Approve Claim'})</text>
+        </name>
+      </place>
+      <place id="({'Register Claim'}, {'Verify Documents'})">
+        <name>
+          <text>({'Register Claim'}, {'Verify Documents'})</text>
+        </name>
+      </place>
+      <place id="start">
+        <name>
+          <text>start</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="({'Approve Claim'}, {'Close Claim'})">
+        <name>
+          <text>({'Approve Claim'}, {'Close Claim'})</text>
+        </name>
+      </place>
+      <place id="({'Verify Documents'}, {'Evaluate Claim'})">
+        <name>
+          <text>({'Verify Documents'}, {'Evaluate Claim'})</text>
+        </name>
+      </place>
+      <transition id="Verify Documents">
+        <name>
+          <text>Verify Documents</text>
+        </name>
+      </transition>
+      <transition id="Evaluate Claim">
+        <name>
+          <text>Evaluate Claim</text>
+        </name>
+      </transition>
+      <transition id="Close Claim">
+        <name>
+          <text>Close Claim</text>
+        </name>
+      </transition>
+      <transition id="Register Claim">
+        <name>
+          <text>Register Claim</text>
+        </name>
+      </transition>
+      <transition id="Approve Claim">
+        <name>
+          <text>Approve Claim</text>
+        </name>
+      </transition>
+      <arc id="2258167815616" source="start" target="Register Claim"/>
+      <arc id="2258167816672" source="({'Approve Claim'}, {'Close Claim'})" target="Close Claim"/>
+      <arc id="2258167817056" source="Approve Claim" target="({'Approve Claim'}, {'Close Claim'})"/>
+      <arc id="2258167813696" source="Verify Documents" target="({'Verify Documents'}, {'Evaluate Claim'})"/>
+      <arc id="2258167813888" source="({'Verify Documents'}, {'Evaluate Claim'})" target="Evaluate Claim"/>
+      <arc id="2258167815952" source="Close Claim" target="end"/>
+      <arc id="2258167817200" source="Evaluate Claim" target="({'Evaluate Claim'}, {'Approve Claim'})"/>
+      <arc id="2258167817680" source="({'Evaluate Claim'}, {'Approve Claim'})" target="Approve Claim"/>
+      <arc id="2258167816912" source="Register Claim" target="({'Register Claim'}, {'Verify Documents'})"/>
+      <arc id="2258167816720" source="({'Register Claim'}, {'Verify Documents'})" target="Verify Documents"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="end">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

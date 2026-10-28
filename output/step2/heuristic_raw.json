@@ -1,0 +1,16 @@
+{
+  "cases": 100,
+  "events": 495,
+  "variants": 5,
+  "places": 8,
+  "transitions": 6,
+  "silent_transitions": 1,
+  "arcs": 16,
+  "fitness_tbr_perc_fit_traces": 84.0,
+  "fitness_tbr_avg": 0.976,
+  "fitness_alignments": 0.9683,
+  "precision": 1.0,
+  "generalization": 0.7496,
+  "simplicity": 0.7778,
+  "sound": true
+}

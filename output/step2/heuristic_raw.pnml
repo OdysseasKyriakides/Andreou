@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text></text>
+    </name>
+    <page id="n0">
+      <place id="splace_in_Approve Claim_Evaluate Claim">
+        <name>
+          <text>splace_in_Approve Claim_Evaluate Claim</text>
+        </name>
+      </place>
+      <place id="splace_in_Approve Claim_Verify Documents">
+        <name>
+          <text>splace_in_Approve Claim_Verify Documents</text>
+        </name>
+      </place>
+      <place id="sink0">
+        <name>
+          <text>sink0</text>
+        </name>
+      </place>
+      <place id="pre_Verify Documents">
+        <name>
+          <text>pre_Verify Documents</text>
+        </name>
+      </place>
+      <place id="source0">
+        <name>
+          <text>source0</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="splace_in_Close Claim_Approve Claim">
+        <name>
+          <text>splace_in_Close Claim_Approve Claim</text>
+        </name>
+      </place>
+      <place id="splace_in_Close Claim_Evaluate Claim">
+        <name>
+          <text>splace_in_Close Claim_Evaluate Claim</text>
+        </name>
+      </place>
+      <place id="pre_Evaluate Claim">
+        <name>
+          <text>pre_Evaluate Claim</text>
+        </name>
+      </place>
+      <transition id="Close Claim">
+        <name>
+          <text>Close Claim</text>
+        </name>
+      </transition>
+      <transition id="Evaluate Claim">
+        <name>
+          <text>Evaluate Claim</text>
+        </name>
+      </transition>
+      <transition id="Verify Documents">
+        <name>
+          <text>Verify Documents</text>
+        </name>
+      </transition>
+      <transition id="Approve Claim">
+        <name>
+          <text>Approve Claim</text>
+        </name>
+      </transition>
+      <transition id="Register Claim">
+        <name>
+          <text>Register Claim</text>
+        </name>
+      </transition>
+      <transition id="hid_4">
+        <name>
+          <text>hid_4</text>
+        </name>
+        <toolspecific tool="ProM" version="6.4" activity="$invisible$" localNodeID="7030bf2a-8f53-42af-9676-55a96202f5cc"/>
+      </transition>
+      <arc id="1895289487872" source="Approve Claim" target="splace_in_Close Claim_Approve Claim"/>
+      <arc id="1895289495552" source="Verify Documents" target="pre_Evaluate Claim"/>
+      <arc id="1895289495168" source="Register Claim" target="pre_Verify Documents"/>
+      <arc id="1895289495936" source="splace_in_Close Claim_Evaluate Claim" target="Close Claim"/>
+      <arc id="1895289495840" source="splace_in_Close Claim_Approve Claim" target="Close Claim"/>
+      <arc id="1895289495456" source="Verify Documents" target="splace_in_Approve Claim_Verify Documents"/>
+      <arc id="1895289487920" source="pre_Evaluate Claim" target="Evaluate Claim"/>
+      <arc id="1895289493296" source="pre_Verify Documents" target="Verify Documents"/>
+      <arc id="1895289495360" source="Evaluate Claim" target="splace_in_Close Claim_Evaluate Claim"/>
+      <arc id="1895289494592" source="source0" target="hid_4"/>
+      <arc id="1895289494208" source="hid_4" target="pre_Verify Documents"/>
+      <arc id="1895289495744" source="splace_in_Approve Claim_Evaluate Claim" target="Approve Claim"/>
+      <arc id="1895289494352" source="Close Claim" target="sink0"/>
+      <arc id="1895289495264" source="Evaluate Claim" target="splace_in_Approve Claim_Evaluate Claim"/>
+      <arc id="1895289495648" source="splace_in_Approve Claim_Verify Documents" target="Approve Claim"/>
+      <arc id="1895289488496" source="source0" target="Register Claim"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink0">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

@@ -1,0 +1,15 @@
+,alpha (raw),heuristic (raw),inductive (raw),alpha (clean),heuristic (clean),inductive (clean)
+Cases,100,100,100,78,78,78
+Events,495,495,495,390,390,390
+Variants,5,5,5,1,1,1
+Places,8,8,8,6,6,6
+Transitions,5,6,9,5,5,5
+Silent (tau) transitions,0,1,4,0,0,0
+Arcs,15,16,20,10,10,10
+Perfectly fitting traces (%),0.0,84.0,100.0,100.0,100.0,100.0
+Fitness (token replay),0.9351,0.976,1.0,1.0,1.0,1.0
+Fitness (alignments),,0.9683,1.0,1.0,1.0,1.0
+Precision,1.0,1.0,0.729,1.0,1.0,1.0
+Generalization,0.8995,0.7496,0.6467,0.8868,0.8868,0.8868
+Simplicity,0.7647,0.7778,0.7391,1.0,1.0,1.0
+Sound (workflow net),False,True,True,True,True,True

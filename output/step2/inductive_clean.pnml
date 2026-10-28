@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="imdf_net_1793200031.0180397" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text>imdf_net_1793200031.0180397</text>
+    </name>
+    <page id="n0">
+      <place id="source">
+        <name>
+          <text>source</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink">
+        <name>
+          <text>sink</text>
+        </name>
+      </place>
+      <place id="p_6">
+        <name>
+          <text>p_6</text>
+        </name>
+      </place>
+      <place id="p_3">
+        <name>
+          <text>p_3</text>
+        </name>
+      </place>
+      <place id="p_4">
+        <name>
+          <text>p_4</text>
+        </name>
+      </place>
+      <place id="p_5">
+        <name>
+          <text>p_5</text>
+        </name>
+      </place>
+      <transition id="354fc12c-499f-4758-8210-e71f6240ae83">
+        <name>
+          <text>Register Claim</text>
+        </name>
+      </transition>
+      <transition id="736423d0-c0f0-4642-bdf2-64c8fa3ed8bf">
+        <name>
+          <text>Close Claim</text>
+        </name>
+      </transition>
+      <transition id="7f4c68df-29cd-4f46-b1fb-38e90b50acbf">
+        <name>
+          <text>Evaluate Claim</text>
+        </name>
+      </transition>
+      <transition id="fa4267c5-c1bf-4a1c-a7eb-b25a3b80c1bb">
+        <name>
+          <text>Verify Documents</text>
+        </name>
+      </transition>
+      <transition id="cfea69c4-8eca-407e-8f02-fbca1355c05a">
+        <name>
+          <text>Approve Claim</text>
+        </name>
+      </transition>
+      <arc id="2089443943936" source="fa4267c5-c1bf-4a1c-a7eb-b25a3b80c1bb" target="p_4"/>
+      <arc id="2089443944032" source="p_3" target="fa4267c5-c1bf-4a1c-a7eb-b25a3b80c1bb"/>
+      <arc id="2089443943744" source="p_4" target="7f4c68df-29cd-4f46-b1fb-38e90b50acbf"/>
+      <arc id="2089443943648" source="7f4c68df-29cd-4f46-b1fb-38e90b50acbf" target="p_5"/>
+      <arc id="2089443942592" source="p_5" target="cfea69c4-8eca-407e-8f02-fbca1355c05a"/>
+      <arc id="2089443943360" source="cfea69c4-8eca-407e-8f02-fbca1355c05a" target="p_6"/>
+      <arc id="2089443944368" source="source" target="354fc12c-499f-4758-8210-e71f6240ae83"/>
+      <arc id="2089443944272" source="354fc12c-499f-4758-8210-e71f6240ae83" target="p_3"/>
+      <arc id="2089443943216" source="p_6" target="736423d0-c0f0-4642-bdf2-64c8fa3ed8bf"/>
+      <arc id="2089443943120" source="736423d0-c0f0-4642-bdf2-64c8fa3ed8bf" target="sink"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>

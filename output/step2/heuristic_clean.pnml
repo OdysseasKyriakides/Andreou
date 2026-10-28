@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <name>
+      <text></text>
+    </name>
+    <page id="n0">
+      <place id="pre_Approve Claim">
+        <name>
+          <text>pre_Approve Claim</text>
+        </name>
+      </place>
+      <place id="pre_Verify Documents">
+        <name>
+          <text>pre_Verify Documents</text>
+        </name>
+      </place>
+      <place id="source0">
+        <name>
+          <text>source0</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="sink0">
+        <name>
+          <text>sink0</text>
+        </name>
+      </place>
+      <place id="pre_Evaluate Claim">
+        <name>
+          <text>pre_Evaluate Claim</text>
+        </name>
+      </place>
+      <place id="pre_Close Claim">
+        <name>
+          <text>pre_Close Claim</text>
+        </name>
+      </place>
+      <transition id="Evaluate Claim">
+        <name>
+          <text>Evaluate Claim</text>
+        </name>
+      </transition>
+      <transition id="Verify Documents">
+        <name>
+          <text>Verify Documents</text>
+        </name>
+      </transition>
+      <transition id="Approve Claim">
+        <name>
+          <text>Approve Claim</text>
+        </name>
+      </transition>
+      <transition id="Register Claim">
+        <name>
+          <text>Register Claim</text>
+        </name>
+      </transition>
+      <transition id="Close Claim">
+        <name>
+          <text>Close Claim</text>
+        </name>
+      </transition>
+      <arc id="1895289235232" source="source0" target="Register Claim"/>
+      <arc id="1895289233600" source="pre_Verify Documents" target="Verify Documents"/>
+      <arc id="1895289230048" source="Approve Claim" target="pre_Close Claim"/>
+      <arc id="1895289234752" source="Close Claim" target="sink0"/>
+      <arc id="1895289237248" source="Evaluate Claim" target="pre_Approve Claim"/>
+      <arc id="1895289235136" source="Verify Documents" target="pre_Evaluate Claim"/>
+      <arc id="1895289234320" source="pre_Approve Claim" target="Approve Claim"/>
+      <arc id="1895289234224" source="pre_Evaluate Claim" target="Evaluate Claim"/>
+      <arc id="1895289233744" source="pre_Close Claim" target="Close Claim"/>
+      <arc id="1895289235280" source="Register Claim" target="pre_Verify Documents"/>
+    </page>
+    <finalmarkings>
+      <marking>
+        <place idref="sink0">
+          <text>1</text>
+        </place>
+      </marking>
+    </finalmarkings>
+  </net>
+</pnml>
