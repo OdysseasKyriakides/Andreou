@@ -10,7 +10,8 @@ CSV = "insurance_claims_log.csv"
 
 
 def load_events(csv=CSV):
-    df = pd.read_csv(csv, dtype={"CaseID": str})
+    """csv: a file path, or a DataFrame with the raw file columns (used for the Step 5 synthetic logs)"""
+    df = csv.copy() if isinstance(csv, pd.DataFrame) else pd.read_csv(csv, dtype={"CaseID": str})
     df = df.rename(columns={"CaseID": "case", "Activity": "activity", "Timestamp": "timestamp_raw",
                             "User": "user", "Cost": "cost"})
     df["timestamp"] = pd.to_datetime(df["timestamp_raw"], format="mixed", errors="coerce")

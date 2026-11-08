@@ -1,0 +1,12 @@
+# Local LLM for the BPM-GenAI project (Steps 3-5).
+# Build:  ollama create bpm-gemma4 -f models/gemma.Modelfile
+# Base: Gemma 4 12B (Q4_K_M, ~8 GB) - fits fully in the 16 GB VRAM of the RX 9070 XT.
+FROM gemma4:12b
+
+# Deterministic output, so runs are reproducible for the Step 6-7 comparisons
+PARAMETER temperature 0
+PARAMETER top_k 1
+PARAMETER seed 42
+
+# Room for the log schema + system prompt + generated code
+PARAMETER num_ctx 16384

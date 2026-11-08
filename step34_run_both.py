@@ -5,20 +5,18 @@ the answers, generated code, time and tokens - evidence for the report and input
 Usage: python step34_run_both.py
 Outputs: output/step3_4/results.md, output/step3_4/summary.csv, output/step3_4/<provider>_q<n>.html (charts)
 """
-import tomllib
 from pathlib import Path
 
 import pandas as pd
 
 from assistant import EXAMPLES_STEP3, ask_log, summarize_trace
-from llm import PROVIDERS
+from llm import PROVIDERS, unload
 from log_data import build_cases, load_events
 
 TRACES = ["Case_1", "Case_5", "Case_13", "Case_77"]  # normal, shifted (C), truncated (B), missing (A)
 OUT = Path("output/step3_4")
 OUT.mkdir(parents=True, exist_ok=True)
 
-keys = tomllib.load(open(".streamlit/secrets.toml", "rb"))
 events = load_events()
 cases = build_cases(events)
 rows, md = [], ["# Steps 3 & 4 - results with both LLMs\n"]
@@ -30,9 +28,10 @@ for i, q in enumerate(EXAMPLES_STEP3, 1):
         model = cfg["default_model"]
         print(f"[3] Q{i} {p} ...", flush=True)
         try:
-            r = ask_log(p, model, keys[cfg["key_name"]], q, events, cases)
+            r = ask_log(p, model, q, events, cases)
+            unload(model)  # the two models do not fit in the GPU memory together
         except Exception as e:
-            r = {"error": f"API: {e}", "answer": "", "result": None, "fig": None, "code": "",
+            r = {"error": f"LLM call: {e}", "answer": "", "result": None, "fig": None, "code": "",
                  "retries": 0, "seconds": 0, "input_tokens": 0, "output_tokens": 0}
         if r["fig"] is not None:
             r["fig"].write_html(OUT / f"{p}_q{i}.html", include_plotlyjs="cdn")
@@ -53,9 +52,10 @@ for case in TRACES:
         model = cfg["default_model"]
         print(f"[4] {case} {p} ...", flush=True)
         try:
-            r = summarize_trace(p, model, keys[cfg["key_name"]], case, events, cases)
+            r = summarize_trace(p, model, case, events, cases)
+            unload(model)
         except Exception as e:
-            r = {"text": f"API error: {e}", "check": {"numbers": 0, "verified": 0, "unverified": []},
+            r = {"text": f"LLM call error: {e}", "check": {"numbers": 0, "verified": 0, "unverified": []},
                  "seconds": 0, "input_tokens": 0, "output_tokens": 0}
         chk = r["check"]
         md += [f"**{p} ({model})** - {r['seconds']:.1f} s, {r['input_tokens']}+{r['output_tokens']} tokens, "

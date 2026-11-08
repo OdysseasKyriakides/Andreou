@@ -45,12 +45,12 @@ EXAMPLES_STEP3 = [
 ]
 
 
-def ask_log(provider, model, api_key, question, events, cases):
+def ask_log(provider, model, question, events, cases):
     messages = [{"role": "user", "content": question}]
     seconds = tok_in = tok_out = 0
     error = None
     for attempt in range(2):  # one retry: the error is sent back so the LLM can fix its code
-        reply = chat(provider, model, api_key, SYSTEM_STEP3, messages, step="3")
+        reply = chat(provider, model, SYSTEM_STEP3, messages, step="3")
         seconds += reply["seconds"]
         tok_in += reply["input_tokens"]
         tok_out += reply["output_tokens"]
@@ -169,9 +169,9 @@ def check_numbers(text, facts):
     return {"numbers": len(found), "verified": len(found) - len(unverified), "unverified": unverified}
 
 
-def summarize_trace(provider, model, api_key, case, events, cases):
+def summarize_trace(provider, model, case, events, cases):
     facts = trace_facts(case, events, cases)
-    reply = chat(provider, model, api_key, SYSTEM_STEP4,
+    reply = chat(provider, model, SYSTEM_STEP4,
                  [{"role": "user", "content": json.dumps(facts, indent=1)}], step="4")
     return {"text": reply["text"].strip(), "facts": facts, "check": check_numbers(reply["text"], facts),
             "seconds": reply["seconds"], "input_tokens": reply["input_tokens"],

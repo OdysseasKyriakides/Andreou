@@ -6,3 +6,5 @@ python-docx
 streamlit
 plotly
 requests
+scikit-learn
+tabulate

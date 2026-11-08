@@ -1,0 +1,5 @@
+time,step,provider,model,seconds,input_tokens,output_tokens
+2026-11-08T22:19:32,3,Local,bpm-gemma4,17.31,583,366
+2026-11-08T22:19:37,3,Local,bpm-gemma4,4.55,582,132
+2026-11-08T22:23:21,3,Local,bpm-gemma4,223.79,585,15796
+2026-11-08T22:26:59,3,Local,bpm-gemma4,218.64,584,15799
